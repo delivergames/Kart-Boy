@@ -1,0 +1,619 @@
+fileFormatVersion: 2
+guid: 92b3e7fb3099132499ac2f217fa94536
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Alfombra 1
+    100002: Alfombra 2
+    100004: Box023
+    100006: Box039
+    100008: Box040
+    100010: Box041
+    100012: Box042
+    100014: Box043
+    100016: Box044
+    100018: Box045
+    100020: Box046
+    100022: Box047
+    100024: Box048
+    100026: Box049
+    100028: Box050
+    100030: Box051
+    100032: Box052
+    100034: Box053
+    100036: Box054
+    100038: Box055
+    100040: Box056
+    100042: Box057
+    100044: Box058
+    100046: Box059
+    100048: Box060
+    100050: Box061
+    100052: Box062
+    100054: Box063
+    100056: Box064
+    100058: Box065
+    100060: Box066
+    100062: Box070
+    100064: Box071
+    100066: Box072
+    100068: Box073
+    100070: Box074
+    100072: Box075
+    100074: Box076
+    100076: Box077
+    100078: Box078
+    100080: Box079
+    100082: Box080
+    100084: Box081
+    100086: Lego_01
+    100088: Lego_02
+    100090: Lego_03
+    100092: Lego_04
+    100094: Lego_05
+    100096: Lego_06
+    100098: Lego_07
+    100100: Lego_08
+    100102: Lego_09
+    100104: Lego_10
+    100106: Lego_11
+    100108: Lego_12
+    100110: Lego_13
+    100112: Lego_14
+    100114: Lego_15
+    100116: Lego_16
+    100118: Lego_17
+    100120: Lego_18
+    100122: Lego_19
+    100124: Lego_20
+    100126: Lego_21
+    100128: Lego_22
+    100130: Lego_23
+    100132: Lego_24
+    100134: Lego_25
+    100136: Lego_26
+    100138: Lego_27
+    100140: Lego_28
+    100142: Lego_29
+    100144: Lego_30
+    100146: Lego_31
+    100148: Lego_32
+    100150: Lego_33
+    100152: Lego_34
+    100154: Lego_35
+    100156: Lego_36
+    100158: Lego_37
+    100160: Lego_38
+    100162: Lego_39
+    100164: Lego_40
+    100166: Lego_41
+    100168: Lego_42
+    100170: Lego_43
+    100172: Lego_44
+    100174: Lego_45
+    100176: Lego_46
+    100178: Lego_47
+    100180: Lego_48
+    100182: Lego_49
+    100184: Lego_50
+    100186: Lego_51
+    100188: Lego_52
+    100190: Lego_53
+    100192: Lego_54
+    100194: //RootNode
+    100196: Mesa 1
+    100198: Mueble 1
+    100200: Mueble 2
+    100202: Mueble 3
+    100204: Piso
+    100206: Silla 002
+    100208: Silla 003
+    100210: Silla 004
+    100212: Silla 005
+    100214: Silla 006
+    100216: Silla 007
+    100218: Tele
+    400000: Alfombra 1
+    400002: Alfombra 2
+    400004: Box023
+    400006: Box039
+    400008: Box040
+    400010: Box041
+    400012: Box042
+    400014: Box043
+    400016: Box044
+    400018: Box045
+    400020: Box046
+    400022: Box047
+    400024: Box048
+    400026: Box049
+    400028: Box050
+    400030: Box051
+    400032: Box052
+    400034: Box053
+    400036: Box054
+    400038: Box055
+    400040: Box056
+    400042: Box057
+    400044: Box058
+    400046: Box059
+    400048: Box060
+    400050: Box061
+    400052: Box062
+    400054: Box063
+    400056: Box064
+    400058: Box065
+    400060: Box066
+    400062: Box070
+    400064: Box071
+    400066: Box072
+    400068: Box073
+    400070: Box074
+    400072: Box075
+    400074: Box076
+    400076: Box077
+    400078: Box078
+    400080: Box079
+    400082: Box080
+    400084: Box081
+    400086: Lego_01
+    400088: Lego_02
+    400090: Lego_03
+    400092: Lego_04
+    400094: Lego_05
+    400096: Lego_06
+    400098: Lego_07
+    400100: Lego_08
+    400102: Lego_09
+    400104: Lego_10
+    400106: Lego_11
+    400108: Lego_12
+    400110: Lego_13
+    400112: Lego_14
+    400114: Lego_15
+    400116: Lego_16
+    400118: Lego_17
+    400120: Lego_18
+    400122: Lego_19
+    400124: Lego_20
+    400126: Lego_21
+    400128: Lego_22
+    400130: Lego_23
+    400132: Lego_24
+    400134: Lego_25
+    400136: Lego_26
+    400138: Lego_27
+    400140: Lego_28
+    400142: Lego_29
+    400144: Lego_30
+    400146: Lego_31
+    400148: Lego_32
+    400150: Lego_33
+    400152: Lego_34
+    400154: Lego_35
+    400156: Lego_36
+    400158: Lego_37
+    400160: Lego_38
+    400162: Lego_39
+    400164: Lego_40
+    400166: Lego_41
+    400168: Lego_42
+    400170: Lego_43
+    400172: Lego_44
+    400174: Lego_45
+    400176: Lego_46
+    400178: Lego_47
+    400180: Lego_48
+    400182: Lego_49
+    400184: Lego_50
+    400186: Lego_51
+    400188: Lego_52
+    400190: Lego_53
+    400192: Lego_54
+    400194: //RootNode
+    400196: Mesa 1
+    400198: Mueble 1
+    400200: Mueble 2
+    400202: Mueble 3
+    400204: Piso
+    400206: Silla 002
+    400208: Silla 003
+    400210: Silla 004
+    400212: Silla 005
+    400214: Silla 006
+    400216: Silla 007
+    400218: Tele
+    2100000: Plastico Amarillo
+    2100002: Plastico Rosa
+    2100004: Plastico Azul
+    2100006: Plastico Violeta
+    2100008: Plastico Verde
+    2100010: Plastico Magenta
+    2100012: 'Material #8'
+    2300000: Alfombra 1
+    2300002: Alfombra 2
+    2300004: Box023
+    2300006: Box039
+    2300008: Box040
+    2300010: Box041
+    2300012: Box042
+    2300014: Box043
+    2300016: Box044
+    2300018: Box045
+    2300020: Box046
+    2300022: Box047
+    2300024: Box048
+    2300026: Box049
+    2300028: Box050
+    2300030: Box051
+    2300032: Box052
+    2300034: Box053
+    2300036: Box054
+    2300038: Box055
+    2300040: Box056
+    2300042: Box057
+    2300044: Box058
+    2300046: Box059
+    2300048: Box060
+    2300050: Box061
+    2300052: Box062
+    2300054: Box063
+    2300056: Box064
+    2300058: Box065
+    2300060: Box066
+    2300062: Box070
+    2300064: Box071
+    2300066: Box072
+    2300068: Box073
+    2300070: Box074
+    2300072: Box075
+    2300074: Box076
+    2300076: Box077
+    2300078: Box078
+    2300080: Box079
+    2300082: Box080
+    2300084: Box081
+    2300086: Lego_01
+    2300088: Lego_02
+    2300090: Lego_03
+    2300092: Lego_04
+    2300094: Lego_05
+    2300096: Lego_06
+    2300098: Lego_07
+    2300100: Lego_08
+    2300102: Lego_09
+    2300104: Lego_10
+    2300106: Lego_11
+    2300108: Lego_12
+    2300110: Lego_13
+    2300112: Lego_14
+    2300114: Lego_15
+    2300116: Lego_16
+    2300118: Lego_17
+    2300120: Lego_18
+    2300122: Lego_19
+    2300124: Lego_20
+    2300126: Lego_21
+    2300128: Lego_22
+    2300130: Lego_23
+    2300132: Lego_24
+    2300134: Lego_25
+    2300136: Lego_26
+    2300138: Lego_27
+    2300140: Lego_28
+    2300142: Lego_29
+    2300144: Lego_30
+    2300146: Lego_31
+    2300148: Lego_32
+    2300150: Lego_33
+    2300152: Lego_34
+    2300154: Lego_35
+    2300156: Lego_36
+    2300158: Lego_37
+    2300160: Lego_38
+    2300162: Lego_39
+    2300164: Lego_40
+    2300166: Lego_41
+    2300168: Lego_42
+    2300170: Lego_43
+    2300172: Lego_44
+    2300174: Lego_45
+    2300176: Lego_46
+    2300178: Lego_47
+    2300180: Lego_48
+    2300182: Lego_49
+    2300184: Lego_50
+    2300186: Lego_51
+    2300188: Lego_52
+    2300190: Lego_53
+    2300192: Lego_54
+    2300194: Mueble 1
+    2300196: Mueble 2
+    2300198: Mueble 3
+    2300200: Piso
+    2300202: Tele
+    3300000: Alfombra 1
+    3300002: Alfombra 2
+    3300004: Box023
+    3300006: Box039
+    3300008: Box040
+    3300010: Box041
+    3300012: Box042
+    3300014: Box043
+    3300016: Box044
+    3300018: Box045
+    3300020: Box046
+    3300022: Box047
+    3300024: Box048
+    3300026: Box049
+    3300028: Box050
+    3300030: Box051
+    3300032: Box052
+    3300034: Box053
+    3300036: Box054
+    3300038: Box055
+    3300040: Box056
+    3300042: Box057
+    3300044: Box058
+    3300046: Box059
+    3300048: Box060
+    3300050: Box061
+    3300052: Box062
+    3300054: Box063
+    3300056: Box064
+    3300058: Box065
+    3300060: Box066
+    3300062: Box070
+    3300064: Box071
+    3300066: Box072
+    3300068: Box073
+    3300070: Box074
+    3300072: Box075
+    3300074: Box076
+    3300076: Box077
+    3300078: Box078
+    3300080: Box079
+    3300082: Box080
+    3300084: Box081
+    3300086: Lego_01
+    3300088: Lego_02
+    3300090: Lego_03
+    3300092: Lego_04
+    3300094: Lego_05
+    3300096: Lego_06
+    3300098: Lego_07
+    3300100: Lego_08
+    3300102: Lego_09
+    3300104: Lego_10
+    3300106: Lego_11
+    3300108: Lego_12
+    3300110: Lego_13
+    3300112: Lego_14
+    3300114: Lego_15
+    3300116: Lego_16
+    3300118: Lego_17
+    3300120: Lego_18
+    3300122: Lego_19
+    3300124: Lego_20
+    3300126: Lego_21
+    3300128: Lego_22
+    3300130: Lego_23
+    3300132: Lego_24
+    3300134: Lego_25
+    3300136: Lego_26
+    3300138: Lego_27
+    3300140: Lego_28
+    3300142: Lego_29
+    3300144: Lego_30
+    3300146: Lego_31
+    3300148: Lego_32
+    3300150: Lego_33
+    3300152: Lego_34
+    3300154: Lego_35
+    3300156: Lego_36
+    3300158: Lego_37
+    3300160: Lego_38
+    3300162: Lego_39
+    3300164: Lego_40
+    3300166: Lego_41
+    3300168: Lego_42
+    3300170: Lego_43
+    3300172: Lego_44
+    3300174: Lego_45
+    3300176: Lego_46
+    3300178: Lego_47
+    3300180: Lego_48
+    3300182: Lego_49
+    3300184: Lego_50
+    3300186: Lego_51
+    3300188: Lego_52
+    3300190: Lego_53
+    3300192: Lego_54
+    3300194: Mueble 1
+    3300196: Mueble 2
+    3300198: Mueble 3
+    3300200: Piso
+    3300202: Tele
+    4300000: Piso
+    4300002: Mueble 2
+    4300004: Box039
+    4300006: Box040
+    4300008: Box041
+    4300010: Box042
+    4300012: Box043
+    4300014: Box044
+    4300016: Box045
+    4300018: Box046
+    4300020: Box023
+    4300022: Box048
+    4300024: Box047
+    4300026: Box049
+    4300028: Box050
+    4300030: Box051
+    4300032: Box052
+    4300034: Box053
+    4300036: Box054
+    4300038: Box055
+    4300040: Box056
+    4300042: Box057
+    4300044: Box058
+    4300046: Box059
+    4300048: Box060
+    4300050: Box061
+    4300052: Box062
+    4300054: Box063
+    4300056: Box064
+    4300058: Box065
+    4300060: Box066
+    4300062: Mueble 1
+    4300064: Tele
+    4300066: Box070
+    4300068: Box071
+    4300070: Box072
+    4300072: Box073
+    4300074: Box074
+    4300076: Box075
+    4300078: Box076
+    4300080: Box077
+    4300082: Box078
+    4300084: Box079
+    4300086: Box080
+    4300088: Box081
+    4300090: Alfombra 1
+    4300092: Lego_23
+    4300094: Lego_22
+    4300096: Lego_21
+    4300098: Lego_27
+    4300100: Lego_28
+    4300102: Lego_29
+    4300104: Lego_30
+    4300106: Lego_31
+    4300108: Lego_18
+    4300110: Lego_19
+    4300112: Lego_20
+    4300114: Lego_54
+    4300116: Lego_53
+    4300118: Lego_52
+    4300120: Lego_51
+    4300122: Lego_50
+    4300124: Lego_49
+    4300126: Lego_48
+    4300128: Lego_32
+    4300130: Lego_33
+    4300132: Lego_34
+    4300134: Lego_35
+    4300136: Lego_36
+    4300138: Lego_37
+    4300140: Lego_38
+    4300142: Lego_39
+    4300144: Lego_47
+    4300146: Lego_46
+    4300148: Lego_44
+    4300150: Lego_45
+    4300152: Lego_41
+    4300154: Lego_42
+    4300156: Lego_43
+    4300158: Lego_13
+    4300160: Lego_14
+    4300162: Lego_15
+    4300164: Lego_16
+    4300166: Lego_12
+    4300168: Lego_11
+    4300170: Lego_10
+    4300172: Lego_08
+    4300174: Lego_07
+    4300176: Lego_06
+    4300178: Lego_40
+    4300180: Mueble 3
+    4300182: Lego_24
+    4300184: Lego_25
+    4300186: Lego_26
+    4300188: Lego_01
+    4300190: Lego_02
+    4300192: Lego_03
+    4300194: Lego_04
+    4300196: Lego_05
+    4300198: Lego_09
+    4300200: Alfombra 2
+    4300202: Lego_17
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

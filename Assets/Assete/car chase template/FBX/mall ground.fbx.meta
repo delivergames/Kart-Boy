@@ -1,0 +1,149 @@
+fileFormatVersion: 2
+guid: e005b059b8eee4f1aa2ba8c3ebd6740f
+timeCreated: 1443067737
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: asphelt
+    100002: concret
+    100004: concrete
+    100006: concrete1
+    100008: concrete2
+    100010: concrete3
+    100012: grass
+    100014: grass1
+    100016: grass2
+    100018: grass3
+    100020: grass4
+    100022: //RootNode
+    100024: sidewalk_nograss1
+    100026: sidewalk_nograss2
+    100028: sidewalk_nograss3
+    100030: sidewalk_nograss4
+    400000: asphelt
+    400002: concret
+    400004: concrete
+    400006: concrete1
+    400008: concrete2
+    400010: concrete3
+    400012: grass
+    400014: grass1
+    400016: grass2
+    400018: grass3
+    400020: grass4
+    400022: //RootNode
+    400024: sidewalk_nograss1
+    400026: sidewalk_nograss2
+    400028: sidewalk_nograss3
+    400030: sidewalk_nograss4
+    2300000: asphelt
+    2300002: concret
+    2300004: concrete
+    2300006: concrete1
+    2300008: concrete2
+    2300010: concrete3
+    2300012: grass
+    2300014: grass1
+    2300016: grass2
+    2300018: grass3
+    2300020: grass4
+    2300022: sidewalk_nograss1
+    2300024: sidewalk_nograss2
+    2300026: sidewalk_nograss3
+    2300028: sidewalk_nograss4
+    3300000: asphelt
+    3300002: concret
+    3300004: concrete
+    3300006: concrete1
+    3300008: concrete2
+    3300010: concrete3
+    3300012: grass
+    3300014: grass1
+    3300016: grass2
+    3300018: grass3
+    3300020: grass4
+    3300022: sidewalk_nograss1
+    3300024: sidewalk_nograss2
+    3300026: sidewalk_nograss3
+    3300028: sidewalk_nograss4
+    4300000: concrete
+    4300002: grass
+    4300004: concrete1
+    4300006: grass1
+    4300008: concrete2
+    4300010: grass2
+    4300012: concret
+    4300014: grass3
+    4300016: concrete3
+    4300018: grass4
+    4300020: sidewalk_nograss4
+    4300022: sidewalk_nograss3
+    4300024: sidewalk_nograss2
+    4300026: sidewalk_nograss1
+    4300028: asphelt
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
