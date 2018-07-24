@@ -1,37 +1,31 @@
 fileFormatVersion: 2
-guid: 5421c190eba966947b38ccb93f5952e4
+guid: 1a2c80ff6d84111428cf3437aa25f0c9
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Cube
-    100004: e
-    100006: k
-    100008: Text
-    400000: //RootNode
-    400002: Cube
-    400004: e
-    400006: k
-    400008: Text
-    2100000: Material_006
-    2100002: Material_005
-    2100004: Material_002
-    2100006: Material
-    2300000: Cube
-    2300002: e
-    2300004: k
-    2300006: Text
-    3300000: Cube
-    3300002: e
-    3300004: k
-    3300006: Text
-    4300000: Text
-    4300002: e
-    4300004: k
-    4300006: Cube
-    7400000: Default Take
-    9500000: //RootNode
-    2186277476908879412: ImportLogs
+    100000: Car
+    100002: //RootNode
+    100004: Path
+    100006: Walls
+    100008: Wheel
+    400000: Car
+    400002: //RootNode
+    400004: Path
+    400006: Walls
+    400008: Wheel
+    2100000: No Name
+    2300000: Car
+    2300002: Path
+    2300004: Walls
+    2300006: Wheel
+    3300000: Car
+    3300002: Path
+    3300004: Walls
+    3300006: Wheel
+    4300000: Wheel
+    4300002: Walls
+    4300004: Path
+    4300006: Car
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -84,7 +78,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -109,7 +103,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
