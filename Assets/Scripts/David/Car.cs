@@ -5,38 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class Car : MonoBehaviour {
 
-    [Header("Settings")]
-
-    [Tooltip("How much the car accelerates over time.")]
-    public float acceleration = 15f;
-
-    [Tooltip("The maximum speed the car can reach by accelerating.")]
-    public float maxSpeed = 15f;
-
-    [Tooltip("How fast the car brakes.")]
-    public float brakeForce = 20f;
-
-    [Tooltip("Useless right now.")]
-    public float friction = 3f;
-
-    [Tooltip("Steering speed when the car is at minimum speed.")]
-    public float minSteeringSpeed = 4f;
-
-    [Tooltip("Steering speed when the car is at maximum speed.")]
-    public float maxSteeringSpeed = 2f;
-
-
-
-    [Header("Structure")]
-    public GameObject wheelPrefab;
-    public Vector3 steeringAxisPosition;
-    public float steeringAxisLength;
-    public Vector3 backAxisPosition;
-    public float backAxisLength;
+    [Header("Configuration")]
+    public CarHandlingSettings settings;
+    public CarStructureSettings structure;
 
     public LayerMask groundLayers;
     public LayerMask wallLayers;
 
+    [Header("Debug")]
     public bool grounded = false;
     public bool skidding = false;
 
@@ -59,10 +35,10 @@ public class Car : MonoBehaviour {
         collider = GetComponent<BoxCollider>();
 
         //Spawn wheels
-        frontRightWheel = Instantiate(wheelPrefab, GetWheelPosition(Wheel.FrontRight), transform.rotation, transform);
-        frontLeftWheel = Instantiate(wheelPrefab, GetWheelPosition(Wheel.FrontLeft), transform.rotation, transform);
-        backRightWheel = Instantiate(wheelPrefab, GetWheelPosition(Wheel.BackRight), transform.rotation, transform);
-        backLeftWheel = Instantiate(wheelPrefab, GetWheelPosition(Wheel.BackLeft), transform.rotation, transform);
+        frontRightWheel = Instantiate(structure.wheelPrefab, GetWheelPosition(Wheel.FrontRight), transform.rotation, transform);
+        frontLeftWheel = Instantiate(structure.wheelPrefab, GetWheelPosition(Wheel.FrontLeft), transform.rotation, transform);
+        backRightWheel = Instantiate(structure.wheelPrefab, GetWheelPosition(Wheel.BackRight), transform.rotation, transform);
+        backLeftWheel = Instantiate(structure.wheelPrefab, GetWheelPosition(Wheel.BackLeft), transform.rotation, transform);
 
     }
 
@@ -94,7 +70,7 @@ public class Car : MonoBehaviour {
             } else {
                 float steeringAngle = Vector3.SignedAngle(transform.forward, steeringDirection, transform.up);
 
-                Plane backPlane = new Plane(backLeftWheel.transform.forward, transform.position + transform.rotation * backAxisPosition);
+                Plane backPlane = new Plane(backLeftWheel.transform.forward, transform.position + transform.rotation * structure.backAxisPosition);
                 float planeHit; 
 
                 //Steer right
@@ -121,10 +97,11 @@ public class Car : MonoBehaviour {
                 }
             }
 
-        } else if (grounded) {
-            //velocity = Vector3.MoveTowards(velocity, Vector3.zero, friction * Time.deltaTime);
-        } else {
-            //transform.position = transform.position + velocity * Time.deltaTime;
+        }
+
+        //Apply friction
+        if (grounded) {
+            forwardSpeed = Mathf.MoveTowards(forwardSpeed, 0f, settings.friction * Time.deltaTime);
         }
 
         //Overcome floor
@@ -150,21 +127,21 @@ public class Car : MonoBehaviour {
 
     public void Accelerate() {
 
-        if (grounded && forwardSpeed < maxSpeed) {
-            forwardSpeed += acceleration * Time.deltaTime;
+        if (grounded && forwardSpeed < settings.maxSpeed) {
+            forwardSpeed += settings.acceleration * Time.deltaTime;
         }
         
     }
 
     public void Brake() {
         if (grounded) {
-            forwardSpeed = Mathf.MoveTowards(forwardSpeed, 0f, brakeForce * Time.deltaTime);
+            forwardSpeed = Mathf.MoveTowards(forwardSpeed, 0f, settings.brakeForce * Time.deltaTime);
         }
     }
 
     public void Steer(float input) {
         float n = Mathf.InverseLerp(-1f, 1f, input);
-        float steeringSpeed = Mathf.Lerp(minSteeringSpeed, maxSteeringSpeed, Mathf.InverseLerp(0f, maxSpeed, forwardSpeed));
+        float steeringSpeed = Mathf.Lerp(settings.minSteeringSpeed, settings.maxSteeringSpeed, Mathf.InverseLerp(0f, settings.maxSpeed, forwardSpeed));
         Debug.Log(steeringSpeed);
 
         Vector3 targetSteeringDirection = Quaternion.Lerp(Quaternion.Euler(0f, -30f, 0f), Quaternion.Euler(0f, 30f, 0f), n) * transform.forward;
@@ -178,13 +155,13 @@ public class Car : MonoBehaviour {
     Vector3 GetWheelPosition(Wheel wheel) {
         switch (wheel) {
             case Wheel.FrontRight:
-                return transform.position + transform.rotation * steeringAxisPosition + transform.right * steeringAxisLength * 0.5f;
+                return transform.position + transform.rotation * structure.steeringAxisPosition + transform.right * structure.steeringAxisLength * 0.5f;
             case Wheel.FrontLeft:
-                return transform.position + transform.rotation * steeringAxisPosition - transform.right * steeringAxisLength * 0.5f;
+                return transform.position + transform.rotation * structure.steeringAxisPosition - transform.right * structure.steeringAxisLength * 0.5f;
             case Wheel.BackRight:
-                return transform.position + transform.rotation * backAxisPosition + transform.right * backAxisLength * 0.5f;
+                return transform.position + transform.rotation * structure.backAxisPosition + transform.right * structure.backAxisLength * 0.5f;
             case Wheel.BackLeft:
-                return transform.position + transform.rotation * backAxisPosition - transform.right * backAxisLength * 0.5f;
+                return transform.position + transform.rotation * structure.backAxisPosition - transform.right * structure.backAxisLength * 0.5f;
             default:
                 return new Vector3();
         }
@@ -192,18 +169,21 @@ public class Car : MonoBehaviour {
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(transform.position + (transform.rotation * steeringAxisPosition), 0.1f);
-        Gizmos.DrawRay(transform.position + (transform.rotation * steeringAxisPosition), steeringDirection);
+        Gizmos.DrawSphere(transform.position + (transform.rotation * structure.steeringAxisPosition), 0.1f);
+        Gizmos.DrawRay(transform.position + (transform.rotation * structure.steeringAxisPosition), steeringDirection);
 
         if(wheelMesh == null) {
             //Get Wheel Mesh
-            wheelMesh = wheelPrefab.GetComponent<MeshFilter>().sharedMesh;
+            wheelMesh = structure.wheelPrefab.GetComponent<MeshFilter>().sharedMesh;
         }
 
-        Gizmos.DrawMesh(wheelMesh, GetWheelPosition(Wheel.FrontRight), transform.rotation);
-        Gizmos.DrawMesh(wheelMesh, GetWheelPosition(Wheel.FrontLeft), transform.rotation);
-        Gizmos.DrawMesh(wheelMesh, GetWheelPosition(Wheel.BackRight), transform.rotation);
-        Gizmos.DrawMesh(wheelMesh, GetWheelPosition(Wheel.BackLeft), transform.rotation);
+        if(frontLeftWheel == null) {
+            Gizmos.color = Color.gray;
+            Gizmos.DrawMesh(wheelMesh, GetWheelPosition(Wheel.FrontRight), transform.rotation);
+            Gizmos.DrawMesh(wheelMesh, GetWheelPosition(Wheel.FrontLeft), transform.rotation);
+            Gizmos.DrawMesh(wheelMesh, GetWheelPosition(Wheel.BackRight), transform.rotation);
+            Gizmos.DrawMesh(wheelMesh, GetWheelPosition(Wheel.BackLeft), transform.rotation);
+        }
 
         Gizmos.color = Color.cyan;
         Gizmos.DrawSphere(pivot, 0.3f);
@@ -211,4 +191,34 @@ public class Car : MonoBehaviour {
 
     public enum Wheel { FrontRight, FrontLeft, BackRight, BackLeft}
 
+}
+
+[System.Serializable]
+public class CarHandlingSettings {
+    [Tooltip("How much the car accelerates over time.")]
+    public float acceleration = 15f;
+
+    [Tooltip("The maximum speed the car can reach by accelerating.")]
+    public float maxSpeed = 15f;
+
+    [Tooltip("How fast the car brakes.")]
+    public float brakeForce = 20f;
+
+    [Tooltip("Useless right now.")]
+    public float friction = 3f;
+
+    [Tooltip("Steering speed when the car is at minimum speed.")]
+    public float minSteeringSpeed = 4f;
+
+    [Tooltip("Steering speed when the car is at maximum speed.")]
+    public float maxSteeringSpeed = 2f;
+}
+
+[System.Serializable]
+public class CarStructureSettings {
+    public GameObject wheelPrefab;
+    public Vector3 steeringAxisPosition;
+    public float steeringAxisLength;
+    public Vector3 backAxisPosition;
+    public float backAxisLength;
 }

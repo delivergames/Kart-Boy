@@ -8,24 +8,29 @@ ModelImporter:
     100004: Path
     100006: Walls
     100008: Wheel
+    100010: Track
     400000: Car
     400002: //RootNode
     400004: Path
     400006: Walls
     400008: Wheel
+    400010: Track
     2100000: No Name
     2300000: Car
     2300002: Path
     2300004: Walls
     2300006: Wheel
+    2300008: Track
     3300000: Car
     3300002: Path
     3300004: Walls
     3300006: Wheel
+    3300008: Track
     4300000: Wheel
     4300002: Walls
     4300004: Path
     4300006: Car
+    4300008: Track
   externalObjects: {}
   materials:
     importMaterials: 1
