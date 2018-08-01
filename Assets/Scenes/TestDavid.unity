@@ -247,13 +247,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 529188508}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.3, y: 6.77, z: 33}
+  m_LocalRotation: {x: -0, y: -0.7700899, z: -0, w: 0.6379353}
+  m_LocalPosition: {x: 60.3, y: 6.821, z: -30.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -100.72401, z: 0}
 --- !u!114 &529188512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +299,7 @@ MonoBehaviour:
   grounded: 0
   skidding: 0
   forwardSpeed: 0
+  upSpeed: 0
   velocity: {x: 0, y: 0, z: 0}
   steeringDirection: {x: 0, y: 0, z: 0}
   pivot: {x: 0, y: 0, z: 0}
@@ -312,8 +313,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.98335576, y: 0.71, z: 2.100299}
-  m_Center: {x: 0, y: 0.38922977, z: 0.11760917}
+  m_Size: {x: 0.9833555, y: 0.79, z: 2.1002984}
+  m_Center: {x: 0, y: 0.38922977, z: 0.11760914}
 --- !u!1 &1394578408
 GameObject:
   m_ObjectHideFlags: 0

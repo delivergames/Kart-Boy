@@ -17,15 +17,18 @@ public class Car : MonoBehaviour {
     public bool skidding = false;
 
     public float forwardSpeed;
+    public float upSpeed;
     public Vector3 velocity;
     public Vector3 steeringDirection;
 
     BoxCollider collider;
 
-    GameObject frontLeftWheel;
-    GameObject frontRightWheel;
-    GameObject backLeftWheel;
-    GameObject backRightWheel;
+    GameObject flWheel;
+    GameObject frWheel;
+    GameObject blWheel;
+    GameObject brWheel;
+
+    Collider flwCol, frwCol, brwCol, blwCol;
 
     Mesh wheelMesh;
 
@@ -35,18 +38,20 @@ public class Car : MonoBehaviour {
         collider = GetComponent<BoxCollider>();
 
         //Spawn wheels
-        frontRightWheel = Instantiate(structure.wheelPrefab, GetWheelPosition(Wheel.FrontRight), transform.rotation, transform);
-        frontLeftWheel = Instantiate(structure.wheelPrefab, GetWheelPosition(Wheel.FrontLeft), transform.rotation, transform);
-        backRightWheel = Instantiate(structure.wheelPrefab, GetWheelPosition(Wheel.BackRight), transform.rotation, transform);
-        backLeftWheel = Instantiate(structure.wheelPrefab, GetWheelPosition(Wheel.BackLeft), transform.rotation, transform);
+        frWheel = Instantiate(structure.wheelPrefab, GetWheelPosition(Wheel.FrontRight), transform.rotation, transform);
+        flWheel = Instantiate(structure.wheelPrefab, GetWheelPosition(Wheel.FrontLeft), transform.rotation, transform);
+        brWheel = Instantiate(structure.wheelPrefab, GetWheelPosition(Wheel.BackRight), transform.rotation, transform);
+        blWheel = Instantiate(structure.wheelPrefab, GetWheelPosition(Wheel.BackLeft), transform.rotation, transform);
+
+        //Add colliders to wheel (for quick bounds)
+        frwCol = frWheel.AddComponent<MeshCollider>();
+        flwCol = flWheel.AddComponent<MeshCollider>();
+        brwCol = brWheel.AddComponent<MeshCollider>();
+        blwCol = blWheel.AddComponent<MeshCollider>();
 
     }
 
     void Update() {
-
-        //if(velocity.magnitude > 0f)
-        //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(steeringDirection), 70f * Time.deltaTime);
-
 
         //Manage side collision
         RaycastHit sideHit;
@@ -58,40 +63,42 @@ public class Car : MonoBehaviour {
         }
 
         //Apply gravity
-        if (!grounded) {
-            velocity += Vector3.down * Physics.gravity.magnitude * Time.deltaTime;
+        upSpeed = upSpeed - Physics.gravity.magnitude * Time.deltaTime;
+
+        if (grounded && upSpeed <= 0f) {
+            upSpeed = -1f;
         }
 
-        //Apply speed
-        if(grounded && !skidding) {
+        //Apply forward speed
+        if (grounded && !skidding) {
 
-            if(steeringDirection == transform.forward) {
+            if (steeringDirection == transform.forward) {
                 transform.position += transform.forward * forwardSpeed * Time.deltaTime;
             } else {
                 float steeringAngle = Vector3.SignedAngle(transform.forward, steeringDirection, transform.up);
 
-                Plane backPlane = new Plane(backLeftWheel.transform.forward, transform.position + transform.rotation * structure.backAxisPosition);
-                float planeHit; 
+                Plane backPlane = new Plane(blWheel.transform.forward, transform.position + transform.rotation * structure.backAxisPosition);
+                float planeHit;
 
                 //Steer right
                 if (steeringAngle > 0f) {
-                    backPlane.Raycast(new Ray(frontRightWheel.transform.position, frontRightWheel.transform.right), out planeHit);
-                    pivot = frontRightWheel.transform.position + frontRightWheel.transform.right * planeHit;
-                    
+                    backPlane.Raycast(new Ray(frWheel.transform.position, frWheel.transform.right), out planeHit);
+                    pivot = frWheel.transform.position + frWheel.transform.right * planeHit;
+
                     //Rotate around pivot
-                    float perimeter = Vector3.Distance(backRightWheel.transform.position, pivot) * 2f * Mathf.PI;
+                    float perimeter = Vector3.Distance(brWheel.transform.position, pivot) * 2f * Mathf.PI;
                     float anglesPerUnit = 360f / perimeter;
                     transform.RotateAround(pivot, transform.up, forwardSpeed * anglesPerUnit * Time.deltaTime);
 
-                } 
-                
+                }
+
                 //Steer left
                 else {
-                    backPlane.Raycast(new Ray(frontLeftWheel.transform.position, -frontLeftWheel.transform.right), out planeHit);
-                    pivot = frontLeftWheel.transform.position - frontLeftWheel.transform.right * planeHit;
+                    backPlane.Raycast(new Ray(flWheel.transform.position, -flWheel.transform.right), out planeHit);
+                    pivot = flWheel.transform.position - flWheel.transform.right * planeHit;
 
                     //Rotate around pivot
-                    float perimeter = Vector3.Distance(backLeftWheel.transform.position, pivot) * 2f * Mathf.PI;
+                    float perimeter = Vector3.Distance(blWheel.transform.position, pivot) * 2f * Mathf.PI;
                     float anglesPerUnit = 360f / perimeter;
                     transform.RotateAround(pivot, transform.up, -(forwardSpeed * anglesPerUnit * Time.deltaTime));
                 }
@@ -99,6 +106,10 @@ public class Car : MonoBehaviour {
 
         }
 
+        //Apply up speed
+        if (!grounded) {
+            transform.position = transform.position + Vector3.up * upSpeed * Time.deltaTime;
+        }
         //Apply friction
         if (grounded) {
             forwardSpeed = Mathf.MoveTowards(forwardSpeed, 0f, settings.friction * Time.deltaTime);
@@ -106,20 +117,21 @@ public class Car : MonoBehaviour {
 
         //Overcome floor
         RaycastHit hit;
-        bool didHit = Physics.BoxCast(collider.bounds.center + Vector3.up * collider.size.y * 2f, collider.size * 0.5f,
-        Vector3.down, out hit, transform.rotation, collider.bounds.size.y * 4f, groundLayers);
+        bool didHit = Physics.Raycast(new Ray(GetBottom() + Vector3.up * 2f, Vector3.down), out hit, float.MaxValue, groundLayers);
 
-        if (didHit && hit.point.y >= collider.bounds.min.y) {
-            transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
-            grounded = true;
-
-        } else if (didHit && hit.point.y >= collider.bounds.min.y - 0.1f) {
+        if (didHit) {
+            SetBottom(hit.point);
+            debugPoint = hit.point;
             grounded = true;
         } else {
             grounded = false;
         }
 
-        
+        if (grounded && didHit) {
+            //Adjust the rotation of the car according to the floor
+            //transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+            //transform.rotation = Quaternion.
+        }
 
     }
 
@@ -142,12 +154,12 @@ public class Car : MonoBehaviour {
     public void Steer(float input) {
         float n = Mathf.InverseLerp(-1f, 1f, input);
         float steeringSpeed = Mathf.Lerp(settings.minSteeringSpeed, settings.maxSteeringSpeed, Mathf.InverseLerp(0f, settings.maxSpeed, forwardSpeed));
-        Debug.Log(steeringSpeed);
+        //Debug.Log(steeringSpeed);
 
         Vector3 targetSteeringDirection = Quaternion.Lerp(Quaternion.Euler(0f, -30f, 0f), Quaternion.Euler(0f, 30f, 0f), n) * transform.forward;
         steeringDirection = Vector3.MoveTowards(steeringDirection, targetSteeringDirection, steeringSpeed * Time.deltaTime).normalized;
-        frontLeftWheel.transform.rotation = Quaternion.LookRotation(steeringDirection);
-        frontRightWheel.transform.rotation = Quaternion.LookRotation(steeringDirection);
+        flWheel.transform.rotation = Quaternion.LookRotation(steeringDirection);
+        frWheel.transform.rotation = Quaternion.LookRotation(steeringDirection);
     }
 
     #endregion
@@ -167,6 +179,25 @@ public class Car : MonoBehaviour {
         }
     }
 
+    Vector3 GetWheelBottom(Wheel wheel) {
+        Vector3 pos = GetWheelPosition(wheel);
+        //Vector3 bottom = pos - transform.up * 
+        return pos;
+    }
+
+    Vector3 GetBottom() {
+        if (collider == null) return Vector3.zero;
+        return transform.position + (transform.rotation * collider.center) - transform.up * collider.size.y * 0.5f;
+    }
+
+    void SetBottom(Vector3 point) {
+        transform.position = point;
+        Vector3 delta = point - GetBottom();
+        transform.position += delta;
+    }
+
+    Vector3 debugPoint;
+
     private void OnDrawGizmos() {
         Gizmos.color = Color.blue;
         Gizmos.DrawSphere(transform.position + (transform.rotation * structure.steeringAxisPosition), 0.1f);
@@ -177,7 +208,7 @@ public class Car : MonoBehaviour {
             wheelMesh = structure.wheelPrefab.GetComponent<MeshFilter>().sharedMesh;
         }
 
-        if(frontLeftWheel == null) {
+        if(flWheel == null) {
             Gizmos.color = Color.gray;
             Gizmos.DrawMesh(wheelMesh, GetWheelPosition(Wheel.FrontRight), transform.rotation);
             Gizmos.DrawMesh(wheelMesh, GetWheelPosition(Wheel.FrontLeft), transform.rotation);
@@ -186,7 +217,12 @@ public class Car : MonoBehaviour {
         }
 
         Gizmos.color = Color.cyan;
-        Gizmos.DrawSphere(pivot, 0.3f);
+        //Gizmos.DrawSphere(pivot, 0.3f);
+
+        Gizmos.DrawSphere(GetBottom(), 0.1f);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(debugPoint, 0.1f);
     }
 
     public enum Wheel { FrontRight, FrontLeft, BackRight, BackLeft}

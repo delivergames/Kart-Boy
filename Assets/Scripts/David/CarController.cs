@@ -20,15 +20,7 @@ public class CarController : MonoBehaviour {
             car.Brake();
         }
 
-        /*if (Input.GetKey(KeyCode.RightArrow)) {
-            car.TurnRight();
-        }
-
-        if (Input.GetKey(KeyCode.LeftArrow)) {
-            car.TurnLeft();
-        }*/
-
-        car.Steer(Input.GetAxis("Horizontal"));
+        car.Steer(Input.GetAxisRaw("Horizontal"));
 
     }
 }
