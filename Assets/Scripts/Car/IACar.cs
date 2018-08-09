@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace UnityStandardAssets.Vehicles.Car
 {
-
+    /*
     public class IACar : MonoBehaviour
     {
         CarAIControl wd;
@@ -169,4 +169,6 @@ namespace UnityStandardAssets.Vehicles.Car
         }
         #endregion
     }
+
+    */
 }

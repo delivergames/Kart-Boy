@@ -51,7 +51,24 @@ public class Car : MonoBehaviour {
 
     }
 
+    bool controlledUpdate = false;
     void Update() {
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            controlledUpdate = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            controlledUpdate = false;
+        }
+
+        if (controlledUpdate == false || (controlledUpdate && Input.GetKeyDown(KeyCode.Alpha1))) {
+            ControlledUpdate();
+        }
+
+    }
+
+    void ControlledUpdate() {
 
         //Manage side collision
         RaycastHit sideHit;
@@ -129,8 +146,12 @@ public class Car : MonoBehaviour {
 
         if (grounded && didHit) {
             //Adjust the rotation of the car according to the floor
-            //transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
-            //transform.rotation = Quaternion.
+            Vector3 oldBottom = GetBottom();
+            Quaternion newRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+            
+            transform.rotation = newRotation;
+            SetBottom(oldBottom);
+
         }
 
     }
