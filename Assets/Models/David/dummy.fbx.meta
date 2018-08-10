@@ -16,6 +16,7 @@ ModelImporter:
     400008: Wheel
     400010: Track
     2100000: No Name
+    2100002: m_Body
     2300000: Car
     2300002: Path
     2300004: Walls

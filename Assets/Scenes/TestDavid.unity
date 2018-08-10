@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -286,10 +286,10 @@ MonoBehaviour:
   structure:
     wheelPrefab: {fileID: 1850107424015844, guid: 42d1ce1c5f1334143b970f1bf439c021,
       type: 2}
-    steeringAxisPosition: {x: 0, y: 0.23, z: 1.09}
-    steeringAxisLength: 0.63
-    backAxisPosition: {x: 0, y: 0.23, z: -0.42}
-    backAxisLength: 0.63
+    steeringAxisPosition: {x: 0, y: 0.23, z: 0.29}
+    steeringAxisLength: 0.87
+    backAxisPosition: {x: 0, y: 0.23, z: -0.73}
+    backAxisLength: 0.87
   groundLayers:
     serializedVersion: 2
     m_Bits: 512
@@ -313,8 +313,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9833555, y: 0.79, z: 2.1002984}
-  m_Center: {x: 0, y: 0.38922977, z: 0.11760914}
+  m_Size: {x: 1.2981473, y: 1.2, z: 2.1231904}
+  m_Center: {x: 0, y: 0.5237255, z: -0.06586401}
 --- !u!1 &1394578408
 GameObject:
   m_ObjectHideFlags: 0

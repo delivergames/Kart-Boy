@@ -147,9 +147,13 @@ public class Car : MonoBehaviour {
         if (grounded && didHit) {
             //Adjust the rotation of the car according to the floor
             Vector3 oldBottom = GetBottom();
-            Quaternion newRotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
-            
+
+            Quaternion fromRotation = Quaternion.FromToRotation(transform.up, hit.normal);
+            Quaternion newRotation = fromRotation * transform.rotation;
             transform.rotation = newRotation;
+
+            steeringDirection = fromRotation * steeringDirection;
+
             SetBottom(oldBottom);
 
         }
@@ -175,12 +179,14 @@ public class Car : MonoBehaviour {
     public void Steer(float input) {
         float n = Mathf.InverseLerp(-1f, 1f, input);
         float steeringSpeed = Mathf.Lerp(settings.minSteeringSpeed, settings.maxSteeringSpeed, Mathf.InverseLerp(0f, settings.maxSpeed, forwardSpeed));
-        //Debug.Log(steeringSpeed);
 
-        Vector3 targetSteeringDirection = Quaternion.Lerp(Quaternion.Euler(0f, -30f, 0f), Quaternion.Euler(0f, 30f, 0f), n) * transform.forward;
+        Vector3 targetSteeringDirection = Quaternion.Lerp(Quaternion.AngleAxis(-30f, transform.up), Quaternion.AngleAxis(30f, transform.up), n) * transform.forward;
+
         steeringDirection = Vector3.MoveTowards(steeringDirection, targetSteeringDirection, steeringSpeed * Time.deltaTime).normalized;
-        flWheel.transform.rotation = Quaternion.LookRotation(steeringDirection);
-        frWheel.transform.rotation = Quaternion.LookRotation(steeringDirection);
+
+        //Set the rotation of the wheels
+        flWheel.transform.rotation = Quaternion.LookRotation(steeringDirection, transform.up);
+        frWheel.transform.rotation = Quaternion.LookRotation(steeringDirection, transform.up);
     }
 
     #endregion
